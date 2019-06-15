@@ -1,0 +1,2 @@
+run: 
+	g++ -Wall -O3 -Wextra -pedantic -std=c++17 Main.cpp -L/Users/nathan/lib/Box2D/Build/bin/x86_64/Debug/ -lBox2D -I/Users/nathan/lib/Box2D/ -I/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -o main && ./main
