@@ -8,8 +8,8 @@
 
 
 
-b2Vec2 WORLD_SIZE(18.0f, 18.0f); // in meters (m)
-sf::Vector2f WIN_SIZE(1000, 1000); // in pixels (px)
+b2Vec2 WORLD_SIZE(30.0f, 30.0f); // in meters (m)
+sf::Vector2f WIN_SIZE(1500, 1500); // in pixels (px)
 
 
 // need to negate all angles and flip all px positions because y axis
@@ -58,10 +58,10 @@ int main()
     b2Vec2 skeleton_size(1.0f, 2.0f);
     b2Vec2 wheel_size(0.3f, 0.6f);
 
-    b2Vec2 left_front_wheel_pos(-0.5f, 1.0f);
-    b2Vec2 right_front_wheel_pos(0.5f, 1.0f);
-    b2Vec2 left_rear_wheel_pos(-0.5f, -1.0f);
-    b2Vec2 right_rear_wheel_pos(0.5f, -1.0f);
+    b2Vec2 left_front_wheel_pos(-0.5f, 0.6f);
+    b2Vec2 right_front_wheel_pos(0.5f, 0.6f);
+    b2Vec2 left_rear_wheel_pos(-0.5f, -0.6f);
+    b2Vec2 right_rear_wheel_pos(0.5f, -0.6f);
 
     // car starting position (center of car, m) and angle (clockwise, rad)
     b2Vec2 car_starting_pos = 0.5f * WORLD_SIZE; // b2Vec2(15.0f, 15.0f);
@@ -203,7 +203,7 @@ int main()
             kill_orthogonal_velocity(left_rear_wheel);
             kill_orthogonal_velocity(right_rear_wheel);
 
-            float max_engine_speed = 40.0f;
+            float max_engine_speed = 30.0f;
             float max_steering_angle = deg2rad(60.0f);
 
             float engine_speed = 0;
@@ -222,6 +222,7 @@ int main()
 
             // steering
             float steering_speed = 1.0f;
+            if(steering_angle == 0.0f) steering_speed *= 10.0f;
             float left_delta_angle = steering_angle - left_front_wheel_joint->GetJointAngle();
             left_front_wheel_joint->SetMotorSpeed(steering_speed * left_delta_angle);
             float right_delta_angle = steering_angle - right_front_wheel_joint->GetJointAngle();
