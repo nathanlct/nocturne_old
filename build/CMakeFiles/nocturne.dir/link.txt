@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/nocturne.dir/src/Car.cpp.o CMakeFiles/nocturne.dir/src/main.cpp.o CMakeFiles/nocturne.dir/src/utils.cpp.o  -o nocturne -Wl,-Bstatic -lBox2D -Wl,-Bdynamic -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-system -lsfml-window 
