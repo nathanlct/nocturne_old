@@ -7,7 +7,10 @@
 #include <vector>
 
 #include "World.hpp"
+#include "Body.hpp"
+#include "BodyPart.hpp"
 #include "utils.hpp"
+#include "RectangleShape.hpp"
 
 
 
@@ -15,10 +18,11 @@ int main()
 {
     World world;
 
-
-
-
-
+    BodyDef body_def;
+    Body* body = world.create_body(body_def);
+    RectangleShape* shape = new RectangleShape(50.0f, 10.0f);
+    BodyPartDef part_def(shape);
+    body->add_part(part_def);
 
     sf::RenderWindow window(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y), "Project Magenta");
     constexpr float max_fps = 60;
@@ -43,8 +47,8 @@ int main()
             float elapsed = clock.getElapsedTime().asSeconds();
             clock.restart();
 
-            // world.step();
-            // window.draw(world);
+            world.step();
+            window.draw(world);
 
             window.display();
         }

@@ -1,18 +1,12 @@
 #include "Shape.hpp"
 
 
-Shape::Shape() {
+Shape::Shape() :
+    shape(nullptr)
+{
 
 }
 
-Shape::~Shape() {
-
-}
-
-b2Shape* Shape::get() {
-    return nullptr;
-}
-
-void Shape::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-
+b2Shape* Shape::get_shape() {
+    return shape.get();
 }

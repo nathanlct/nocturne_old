@@ -8,8 +8,8 @@
 
 
 struct BodyPartDef {
-    BodyPartDef() :
-        shape(nullptr),
+    BodyPartDef(Shape* shape) :
+        shape(shape),
         density(1.0f), friction(1.0f), restitution(1.0f),
         collides(true)
     {}

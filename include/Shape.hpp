@@ -8,10 +8,12 @@
 class Shape : public sf::Drawable {
 public:
     Shape();
-    ~Shape();
 
-    b2Shape* get();
+    b2Shape* get_shape();
 
-private:
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+protected:
+    std::unique_ptr<b2Shape> shape;
+
+protected:
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 };
