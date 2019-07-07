@@ -27,6 +27,8 @@ void Body::add_part(const BodyPartDef& part_def) {
 
 void Body::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     for(const BodyPart& part: parts) {
+        sf::Vector2f pos = m2px(body->GetPosition(), true);
+        states.transform.translate(pos);
         target.draw(part, states);
     }
 }

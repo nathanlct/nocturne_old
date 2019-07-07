@@ -9,6 +9,8 @@ BodyPart::BodyPart(const BodyPartDef& body_part_def, b2Body* body) {
     def.restitution = body_part_def.restitution;
     def.isSensor = body_part_def.collides;
     body->CreateFixture(&def);
+
+    shape = body_part_def.shape;
 }
 
 BodyPart::~BodyPart() {
@@ -16,5 +18,5 @@ BodyPart::~BodyPart() {
 }
 
 void BodyPart::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-
+    target.draw(*shape, states);
 }

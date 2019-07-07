@@ -16,11 +16,13 @@
 
 int main()
 {
-    World world;
+    World world; // TODO put world size as parameter of ctor
 
     BodyDef body_def;
+    body_def.x = 20.0f;
+    body_def.y = 30.0f;
     Body* body = world.create_body(body_def);
-    RectangleShape* shape = new RectangleShape(50.0f, 10.0f);
+    RectangleShape* shape = new RectangleShape(2.0f, 5.0f);
     BodyPartDef part_def(shape);
     body->add_part(part_def);
 
@@ -48,7 +50,7 @@ int main()
             clock.restart();
 
             world.step();
-            window.draw(world);
+            window.draw(world);      
 
             window.display();
         }

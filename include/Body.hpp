@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "BodyPart.hpp"
+#include "utils.hpp"
 
 
 struct BodyDef {
