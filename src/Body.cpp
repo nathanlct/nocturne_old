@@ -29,6 +29,7 @@ void Body::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     for(const BodyPart& part: parts) {
         sf::Vector2f pos = m2px(body->GetPosition(), true);
         states.transform.translate(pos);
+        states.transform.rotate(body->GetAngle() * 360.0f / 2.0f / 3.14f);
         target.draw(part, states);
     }
 }

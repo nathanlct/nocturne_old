@@ -21,6 +21,7 @@ int main()
     BodyDef body_def;
     body_def.x = 20.0f;
     body_def.y = 30.0f;
+    body_def.angle = 3.14f / 4.0f;
     Body* body = world.create_body(body_def);
     RectangleShape* shape = new RectangleShape(2.0f, 5.0f);
     BodyPartDef part_def(shape);

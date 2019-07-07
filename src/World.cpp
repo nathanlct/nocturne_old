@@ -8,7 +8,7 @@ World::World() :
     velocity_iterations(10),
     position_iterations(8)
 {
-    b2Vec2 gravity(0.0f, 0.0f);
+    b2Vec2 gravity(0.0f, -10.0f);
     world = new b2World(gravity);
 }
 
