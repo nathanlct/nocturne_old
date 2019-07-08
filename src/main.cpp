@@ -29,7 +29,7 @@ int main()
 
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y), "Project Magenta", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y), "Nocturne", sf::Style::Default, settings);
     
     constexpr float max_fps = 60;
     const float time_between_frames = 1.0 / max_fps;
