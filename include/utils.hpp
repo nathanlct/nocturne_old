@@ -9,11 +9,14 @@ extern sf::Vector2f WIN_SIZE; // in pixels (px)
 
 
 
+extern float m2px;  // the number of pixels used to represent one meter
+
+
 // need to negate all angles and flip all px positions because y axis
 // is pointing down in sfml
-sf::Vector2f m2px(const b2Vec2& v, bool flip=false);
+// sf::Vector2f m2px(const b2Vec2& v, bool flip=false);
 
-float m2px(float m);
+// float m2px(float m);
 
 float rad2deg(float angle, bool flip=false);
 

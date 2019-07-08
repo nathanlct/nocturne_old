@@ -17,7 +17,7 @@ public:
         shape = std::make_unique<b2PolygonShape>();
         get_shape()->SetAsBox(width / 2.0f, height / 2.0f);
 
-        sf::Vector2f rect_size(m2px(width), m2px(height));
+        sf::Vector2f rect_size(width * m2px, height * m2px);
         rect = sf::RectangleShape(rect_size);
         rect.setOrigin(rect_size / 2.0f);
         rect.setFillColor(sf::Color::Transparent);
