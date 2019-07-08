@@ -59,7 +59,7 @@ int main()
                     break;
                 case sf::Event::Resized:
                     main_view.reset(sf::FloatRect(0, 0, event.size.width, event.size.height - 50.0f));
-                    status_bar_view.reset(sf::FloatRect(0, 0, WIN_SIZE.x, 50.0f));
+                    status_bar_view.reset(sf::FloatRect(0, 0, event.size.width, 50.0f));
                     main_view.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, (event.size.height - 50.0f) / event.size.height));
                     status_bar_view.setViewport(sf::FloatRect(0.0f, (event.size.height - 50.0f) / event.size.height, 1.0f, 50.0f / event.size.height));
                     break;
