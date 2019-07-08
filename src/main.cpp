@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
+#include <sstream>
 #include <vector>
 
 #include "World.hpp"
@@ -37,6 +38,12 @@ int main()
     sf::View status_bar_view(sf::FloatRect(0.0f, 0.0f, WIN_SIZE.x, 50.0f));
     main_view.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, (WIN_SIZE.y - 50.0f) / WIN_SIZE.y));
     status_bar_view.setViewport(sf::FloatRect(0.0f, (WIN_SIZE.y - 50.0f) / WIN_SIZE.y, 1.0f, 50.0f / WIN_SIZE.y));
+
+    sf::Font font;
+    if (!font.loadFromFile("../resources/GeosansLight.ttf"))
+    {
+        std::cout << "ERROR: couldn't load font." << std::endl;
+    }
 
     sf::Vector2f mouse_pos(0.0f, 0.0f);
     bool dragging = false;
@@ -74,6 +81,7 @@ int main()
                     }
                     break;
                 case sf::Event::MouseMoved:
+                {
                     if(dragging) {
                         sf::Vector2f new_mouse_pos = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
                         sf::Vector2f diff = new_mouse_pos - mouse_pos;
@@ -81,6 +89,7 @@ int main()
                         mouse_pos = new_mouse_pos;
                     }
                     break;
+                }
                 default:
                     break;
             }
@@ -98,11 +107,28 @@ int main()
 
             window.setView(status_bar_view);
 
-            sf::RectangleShape rect({50000, 50000});
-            rect.setPosition(-25000, -25000);
-            rect.setFillColor(sf::Color::Black);
-            window.draw(rect);
+            sf::RectangleShape status_bar_bg({(float)window.getSize().x, 50.0f});
+            status_bar_bg.setPosition(0.0f, 0.0f);
+            status_bar_bg.setFillColor(sf::Color(50, 50, 50));
+            window.draw(status_bar_bg);
 
+            sf::Vector2i rel = sf::Mouse::getPosition(window);
+            sf::Vector2f abs = window.mapPixelToCoords(rel, main_view);
+
+            std::ostringstream string_stream;
+            string_stream << "Relative (" << rel.x << ", " << rel.y << ")px - ";
+            string_stream << "Absolute (" << abs.x << ", " << abs.y << ")px = ";
+            string_stream << "(" << abs.x / m2px << ", " << - (abs.y - WIN_SIZE.y) / m2px << ")m";
+            std::string text_str = string_stream.str();
+
+            sf::Text text;
+            text.setFont(font);
+            text.setPosition(10, 10);
+            text.setString(text_str);
+            text.setCharacterSize(30);
+            text.setFillColor(sf::Color::White);
+            text.setStyle(sf::Text::Bold);
+            window.draw(text);
 
 
             window.display();
