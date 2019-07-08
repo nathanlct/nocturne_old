@@ -28,8 +28,8 @@ void Body::add_part(const BodyPartDef& part_def) {
 void Body::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     for(const BodyPart& part: parts) {
         b2Vec2 pos = body->GetPosition();
-        states.transform.translate({pos.x * m2px, pos.y * m2px});
-        states.transform.rotate(body->GetAngle() * 360.0f / 2.0f / 3.14f);
+        states.transform.translate({pos.x * m2px, - pos.y * m2px + WIN_SIZE.y});
+        states.transform.rotate(- body->GetAngle() * 360.0f / 2.0f / 3.14f);
         target.draw(part, states);
     }
 }
