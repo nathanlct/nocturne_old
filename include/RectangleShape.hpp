@@ -14,7 +14,7 @@ public:
     RectangleShape(float width, float height) :
         width(width), height(height)
     {
-        shape = std::make_unique<b2PolygonShape>();
+        shape = make_unique<b2PolygonShape>();
         get_shape()->SetAsBox(width / 2.0f, height / 2.0f);
 
         sf::Vector2f rect_size(width * m2px, height * m2px);

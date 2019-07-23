@@ -8,7 +8,6 @@ extern b2Vec2 WORLD_SIZE; // in meters (m)
 extern sf::Vector2f WIN_SIZE; // in pixels (px)
 
 
-
 extern float m2px;  // the number of pixels used to represent one meter
 
 
@@ -23,3 +22,9 @@ float rad2deg(float angle, bool flip=false);
 float deg2rad(float angle);
 
 b2Vec2 rotate(const b2Vec2& v, float angle);
+
+template<typename T, typename... Args>
+std::unique_ptr<T> make_unique(Args&&... args)
+{
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
