@@ -9,7 +9,7 @@
 
 class World : public sf::Drawable {
 public:
-    World();
+    World(); // TODO put world size as parameter of ctor
     ~World();
 
     Body* create_body(BodyDef body_def);
